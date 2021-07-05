@@ -96,6 +96,7 @@
     <Compile Include="Assets\Project\Runtime\Events\CustomEvents\ItemEvent.cs" />
     <Compile Include="Assets\Project\Editor\Utils\ToDoListGUI.cs" />
     <Compile Include="Assets\Project\Runtime\Utils\ToggleActiveWithKeyPress.cs" />
+    <Compile Include="Assets\Project\Runtime\UI\Window\GUIHeader.cs" />
     <Compile Include="Assets\Project\Runtime\Events\Listeners\SubRealmListener.cs" />
     <Compile Include="Assets\Project\Runtime\Events\CustomEvents\SubRealmEvent.cs" />
     <Compile Include="Assets\Project\Runtime\Events\CustomEvents\StatEvent.cs" />
@@ -152,7 +153,6 @@
     <Compile Include="Assets\Project\Runtime\Events\Listeners\VoidListener.cs" />
     <Compile Include="Assets\Project\Runtime\AI\Interactions\Vendors\VendorData.cs" />
     <Compile Include="Assets\Project\Runtime\Events\CustomEvents\NPCEvent.cs" />
-    <Compile Include="Assets\Project\Runtime\UI\Window\GUIHeader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Project\Project.asmdef" />
