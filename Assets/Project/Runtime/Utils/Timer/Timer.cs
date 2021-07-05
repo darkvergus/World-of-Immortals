@@ -1,0 +1,181 @@
+﻿using System;
+using UnityEngine;
+using Object = UnityEngine.Object;
+
+namespace Utils
+{
+    public class Timer
+    {
+        private static TimerManager manager;
+
+        private readonly Action onComplete;
+        private readonly Action<float> onUpdate;
+        private float startTime;
+        private float lastUpdateTime;
+
+        private float? timeElapsedBeforeCancel;
+        private float? timeElapsedBeforePause;
+
+        private readonly MonoBehaviour autoDestroyOwner;
+        private readonly bool hasAutoDestroyOwner;
+
+        public float Duration { get; private set; }
+
+        public bool IsLooped { get; set; }
+        public bool IsCompleted { get; private set; }
+        public bool UsesRealTime { get; private set; }
+        public bool IsPaused => timeElapsedBeforePause.HasValue;
+        public bool IsCancelled => timeElapsedBeforeCancel.HasValue;
+
+        private bool IsOwnerDestroyed => hasAutoDestroyOwner && autoDestroyOwner == null;
+        public bool IsDone => IsCompleted || IsCancelled || IsOwnerDestroyed;
+
+        public static Timer Register(float duration, Action onComplete, Action<float> onUpdate = null, bool isLooped = false, bool useRealTime = false, MonoBehaviour autoDestroyOwner = null)
+        {
+            if (manager == null)
+            {
+                TimerManager managerInScene = Object.FindObjectOfType<TimerManager>();
+                if (managerInScene != null)
+                {
+                    manager = managerInScene;
+                }
+                else
+                {
+                    GameObject managerObject = new GameObject { name = "TimerManager" };
+                    manager = managerObject.AddComponent<TimerManager>();
+                }
+            }
+
+            Timer timer = new Timer(duration, onComplete, onUpdate, isLooped, useRealTime, autoDestroyOwner);
+            manager.RegisterTimer(timer);
+            return timer;
+        }
+
+        public static void Cancel(Timer timer)
+        {
+            if (timer != null)
+                timer.Cancel();
+        }
+
+        public void Cancel()
+        {
+            if (IsDone)
+                return;
+
+            timeElapsedBeforeCancel = GetTimeElapsed();
+            timeElapsedBeforePause = null;
+        }
+
+        public static void Pause(Timer timer)
+        {
+            if (timer != null)
+                timer.Pause();
+        }
+
+        public void Pause()
+        {
+            if (IsPaused || IsDone)
+                return;
+
+            timeElapsedBeforePause = GetTimeElapsed();
+        }
+
+        public static void Resume(Timer timer)
+        {
+            if (timer != null)
+                timer.Resume();
+        }
+
+        public void Resume()
+        {
+            if (!IsPaused || IsDone)
+                return;
+
+            timeElapsedBeforePause = null;
+        }
+
+        public static void CancelAllRegisteredTimers()
+        {
+            if (manager != null)
+                manager.CancelAllTimers();
+
+        }
+
+        public static void PauseAllRegisteredTimers()
+        {
+            if (manager != null)
+                manager.PauseAllTimers();
+        }
+
+        public static void ResumeAllRegisteredTimers()
+        {
+            if (manager != null)
+                manager.ResumeAllTimers();
+        }
+
+     
+        public float GetTimeElapsed()
+        {
+            if (IsCompleted || GetWorldTime() >= GetFireTime())
+                return Duration;
+
+            return timeElapsedBeforeCancel ?? timeElapsedBeforePause ?? GetWorldTime() - startTime;
+        }
+
+        public float GetTimeRemaining() => Duration - GetTimeElapsed();
+        public float GetRatioComplete() => GetTimeElapsed() / Duration;
+        public float GetRatioRemaining() => GetTimeRemaining() / Duration;
+
+        private Timer(float duration, Action onComplete, Action<float> onUpdate, bool isLooped, bool usesRealTime, MonoBehaviour autoDestroyOwner)
+        {
+            Duration = duration;
+            this.onComplete = onComplete;
+            this.onUpdate = onUpdate;
+
+            IsLooped = isLooped;
+            UsesRealTime = usesRealTime;
+
+            this.autoDestroyOwner = autoDestroyOwner;
+            hasAutoDestroyOwner = autoDestroyOwner != null;
+
+            startTime = GetWorldTime();
+            lastUpdateTime = startTime;
+        }
+
+        private float GetWorldTime() => UsesRealTime ? Time.realtimeSinceStartup : Time.time;
+
+        private float GetFireTime() => startTime + Duration;
+
+        private float GetTimeDelta() => GetWorldTime() - lastUpdateTime;
+
+        public void Update()
+        {
+            if (IsDone)
+                return;
+
+            if (IsPaused)
+            {
+                startTime += GetTimeDelta();
+                lastUpdateTime = GetWorldTime();
+                return;
+            }
+
+            lastUpdateTime = GetWorldTime();
+
+            onUpdate?.Invoke(GetTimeElapsed());
+
+            if (GetWorldTime() >= GetFireTime())
+            {
+
+                onComplete?.Invoke();
+
+                if (IsLooped)
+                    startTime = GetWorldTime();
+                else
+                    IsCompleted = true;
+            }
+        }
+
+       
+    }
+}

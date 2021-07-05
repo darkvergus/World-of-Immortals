@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 8f46bbea70fdff540a34bc8a9ff21c42
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - itemSlotUI: {instanceID: 0}
+  - onMouseStartHoverItem: {fileID: 11400000, guid: b36cde1b22eb38243a588c11928b0843, type: 2}
+  - onMouseEndHoverItem: {fileID: 11400000, guid: 45b52598bef2bd34f96f2851b9076d64, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
