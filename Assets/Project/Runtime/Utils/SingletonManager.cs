@@ -2,8 +2,8 @@
 
 namespace Utils
 {
-    public abstract class SingletonManager<T> : MonoBehaviour where T : MonoBehaviour
-    {
+    public class SingletonManager<T> : MonoBehaviour where T : SingletonManager<T>
+	{
         private static T instance;
 
 		public static T Instance
@@ -30,7 +30,7 @@ namespace Utils
 		{
 			if (instance == null)
 			{
-				instance = this as T;
+                instance = (T)this;
 				DontDestroyOnLoad(gameObject);
 			}
 			else
