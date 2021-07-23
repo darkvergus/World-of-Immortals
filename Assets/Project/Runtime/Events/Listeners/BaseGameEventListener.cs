@@ -12,16 +12,20 @@ namespace Events
 
         private void OnEnable()
         {
-            if (gameEvent == null) 
+            if (gameEvent == null)
+            {
                 return;
+            }
 
             GameEvent.RegisterListener(this);
         }
 
         private void OnDisable()
         {
-            if (gameEvent == null) 
+            if (gameEvent == null)
+            {
                 return;
+            }
 
             GameEvent.UnregisterListener(this);
         }
@@ -29,7 +33,9 @@ namespace Events
         public void OnEventRaised(T item)
         {
             if (unityEventResponse != null)
+            {
                 unityEventResponse.Invoke(item);
+            }
         }
     }
 }

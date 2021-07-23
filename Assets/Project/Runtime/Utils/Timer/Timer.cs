@@ -41,7 +41,7 @@ namespace Utils
                 }
                 else
                 {
-                    GameObject managerObject = new GameObject() { name = "TimerManager" };
+                    GameObject managerObject = new GameObject("TimerManager");
                     manager = managerObject.AddComponent<TimerManager>();
                 }
             }
@@ -54,13 +54,17 @@ namespace Utils
         public static void Cancel(Timer timer)
         {
             if (timer != null)
+            {
                 timer.Cancel();
+            }
         }
 
         public void Cancel()
         {
             if (IsDone)
+            {
                 return;
+            }
 
             timeElapsedBeforeCancel = GetTimeElapsed();
             timeElapsedBeforePause = null;
@@ -69,13 +73,17 @@ namespace Utils
         public static void Pause(Timer timer)
         {
             if (timer != null)
+            {
                 timer.Pause();
+            }
         }
 
         public void Pause()
         {
             if (IsPaused || IsDone)
+            {
                 return;
+            }
 
             timeElapsedBeforePause = GetTimeElapsed();
         }
@@ -83,13 +91,17 @@ namespace Utils
         public static void Resume(Timer timer)
         {
             if (timer != null)
+            {
                 timer.Resume();
+            }
         }
 
         public void Resume()
         {
             if (!IsPaused || IsDone)
+            {
                 return;
+            }
 
             timeElapsedBeforePause = null;
         }
@@ -97,30 +109,31 @@ namespace Utils
         public static void CancelAllRegisteredTimers()
         {
             if (manager != null)
+            {
                 manager.CancelAllTimers();
-
+            }
         }
 
         public static void PauseAllRegisteredTimers()
         {
             if (manager != null)
+            {
                 manager.PauseAllTimers();
+            }
         }
 
         public static void ResumeAllRegisteredTimers()
         {
             if (manager != null)
+            {
                 manager.ResumeAllTimers();
+            }
         }
 
-     
-        public float GetTimeElapsed()
-        {
-            if (IsCompleted || GetWorldTime() >= GetFireTime())
-                return Duration;
 
-            return timeElapsedBeforeCancel ?? timeElapsedBeforePause ?? GetWorldTime() - startTime;
-        }
+        public float GetTimeElapsed() => IsCompleted || GetWorldTime() >= GetFireTime()
+                ? Duration
+                : timeElapsedBeforeCancel ?? timeElapsedBeforePause ?? GetWorldTime() - startTime;
 
         public float GetTimeRemaining() => Duration - GetTimeElapsed();
         public float GetRatioComplete() => GetTimeElapsed() / Duration;
@@ -151,7 +164,9 @@ namespace Utils
         public void Update()
         {
             if (IsDone)
+            {
                 return;
+            }
 
             if (IsPaused)
             {
@@ -170,9 +185,13 @@ namespace Utils
                 onComplete?.Invoke();
 
                 if (IsLooped)
+                {
                     startTime = GetWorldTime();
+                }
                 else
+                {
                     IsCompleted = true;
+                }
             }
         }
 

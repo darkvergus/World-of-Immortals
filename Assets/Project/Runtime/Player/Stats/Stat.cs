@@ -21,7 +21,8 @@ namespace Stats
         public float CurrentPoints { get { return Mathf.Clamp(currentPoints, 0, maxPoints); } private set { currentPoints = value; } }
         public int MaxPoints { get { return maxPoints; } private set { maxPoints = value; } }
 
-        public StatEvent OnStatAddEvent;
+        private StatEvent onStatAddEvent;
+        public StatEvent OnStatAddEvent => onStatAddEvent;
 
         public void AddStatPoints(int points) => CurrentPoints += points;
 

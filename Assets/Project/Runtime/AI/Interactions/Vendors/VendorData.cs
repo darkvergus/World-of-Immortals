@@ -7,7 +7,7 @@ namespace AI
         public IItemContainer BuyingItemContainer => IsFirstContainerBuying ? itemContainers[0] : itemContainers[1];
         public IItemContainer SellingItemContainer => IsFirstContainerBuying ? itemContainers[1] : itemContainers[0];
 
-        private IItemContainer[] itemContainers = new IItemContainer[2];
+        private readonly IItemContainer[] itemContainers = new IItemContainer[2];
 
         public bool IsFirstContainerBuying { get; set; } = true;
 

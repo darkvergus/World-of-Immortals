@@ -11,35 +11,36 @@ namespace AI
     public class VendorSystem : MonoBehaviour
     {
         [SerializeField]
-        private GameObject buttonPrefab = null;
+        private GameObject buttonPrefab;
 
         [SerializeField]
-        private Transform buttonHolderTransform = null;
+        private Transform buttonHolderTransform;
 
         [SerializeField]
-        private GameObject itemDataHolder = null;
+        private GameObject itemDataHolder;
 
         [Header("Item Data Display")]
         [SerializeField]
-        private TextMeshProUGUI itemNameText = null;
+        private TextMeshProUGUI itemNameText;
 
         [SerializeField]
-        private TextMeshProUGUI itemDescriptionText = null;
+        private TextMeshProUGUI itemDescriptionText;
 
         [SerializeField]
-        private TextMeshProUGUI itemInfoText = null;
+        private TextMeshProUGUI itemInfoText;
 
         [Header("Quantity Display")]
         [SerializeField]
-        private TextMeshProUGUI amountText = null;
+        private TextMeshProUGUI amountText;
 
         [SerializeField]
-        private Slider amountSlider = null;
-        
-        private VendorData vendorData = null;
-        private InventoryItem currentItem = null;
+        private Slider amountSlider;
 
-        public StringEvent OnInsufficientSpiritStones;
+        private VendorData vendorData;
+        private InventoryItem currentItem;
+
+        private StringEvent onInsufficientSpiritStones;
+        public StringEvent OnInsufficientSpiritStones { get { return onInsufficientSpiritStones; } set { onInsufficientSpiritStones = value; } }
 
         public void StartScenario(VendorData vendorData)
         {

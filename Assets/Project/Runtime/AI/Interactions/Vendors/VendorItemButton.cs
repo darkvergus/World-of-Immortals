@@ -8,13 +8,13 @@ namespace AI
     public class VendorItemButton : MonoBehaviour
     {
         [SerializeField]
-        private TextMeshProUGUI itemNameText = null;
+        private TextMeshProUGUI itemNameText;
 
         [SerializeField]
-        private Image itemIconImage = null;
+        private Image itemIconImage;
 
-        private VendorSystem vendorSystem = null;
-        private InventoryItem item = null;
+        private VendorSystem vendorSystem;
+        private InventoryItem item;
 
         public void Initialize(VendorSystem vendorSystem, InventoryItem item, int amount)
         {

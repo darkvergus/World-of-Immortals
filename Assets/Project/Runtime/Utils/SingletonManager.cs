@@ -13,7 +13,9 @@ namespace Utils
             get
             {
                 if (shuttingDown)
+                {
                     return null;
+                }
 
                 lock (@lock)
                 {
@@ -34,8 +36,8 @@ namespace Utils
             }
         }
 
-        private void OnApplicationQuit() => shuttingDown = true;
+        private static void OnApplicationQuit() => shuttingDown = true;
 
-        private void OnDestroy() => shuttingDown = true;
+        private static void OnDestroy() => shuttingDown = true;
     }
 }

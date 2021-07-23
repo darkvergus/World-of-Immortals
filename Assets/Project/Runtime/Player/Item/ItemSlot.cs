@@ -3,7 +3,7 @@
 namespace InventorySystem
 {
     [Serializable]
-    public struct ItemSlot
+    public struct ItemSlot : IEquatable<ItemSlot>
     {
         public InventoryItem item;
         public int amount;
@@ -13,5 +13,7 @@ namespace InventorySystem
             this.item = item;
             this.amount = amount;
         }
+
+        public bool Equals(ItemSlot other) => other is ItemSlot otherS && Equals(otherS);
     }
 }

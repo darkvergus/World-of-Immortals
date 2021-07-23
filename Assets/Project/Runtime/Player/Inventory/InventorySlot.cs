@@ -7,10 +7,10 @@ namespace InventorySystem
     public class InventorySlot : ItemSlotUI, IDropHandler
     {
         [SerializeField]
-        private Inventory inventory = null;
+        private Inventory inventory;
 
         [SerializeField]
-        private TextMeshProUGUI itemQuantityText = null;
+        private TextMeshProUGUI itemQuantityText;
 
         public override Item SlotItem
         {

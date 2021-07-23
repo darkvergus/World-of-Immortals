@@ -1,6 +1,6 @@
 ﻿namespace Events
 {
-    public interface IGameEventListener<T>
+    public interface IGameEventListener<in T>
     {
         void OnEventRaised(T item);
     }

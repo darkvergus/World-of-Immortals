@@ -9,8 +9,8 @@ namespace InventorySystem
         [SerializeField] 
         private int spiritStones = 0;
 
-        [SerializeField] 
-        private UnityEvent onInventoryItemsUpdated = null;
+        [SerializeField]
+        private UnityEvent onInventoryItemsUpdated;
         
         [SerializeField] 
         private ItemSlot[] itemSlots = new ItemSlot[0];
@@ -181,8 +181,10 @@ namespace InventorySystem
         {
             foreach (ItemSlot itemSlot in itemSlots)
             {
-                if (itemSlot.item == null || itemSlot.item != item) 
+                if (itemSlot.item == null || itemSlot.item != item)
+                {
                     continue;
+                }
 
                 return true;
             }
@@ -197,7 +199,9 @@ namespace InventorySystem
             foreach (ItemSlot itemSlot in itemSlots)
             {
                 if (itemSlot.item == null || itemSlot.item != item)
+                {
                     continue;
+                }
 
                 totalCount += itemSlot.amount;
             }

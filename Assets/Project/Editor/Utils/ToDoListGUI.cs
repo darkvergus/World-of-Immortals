@@ -8,10 +8,14 @@ namespace Utils
     {
         [SerializeField]
         private Texture2D iconScript;
-        public Texture2D iconDone;
+
+        [SerializeField]
+        private Texture2D iconDone;
+        
         public Texture2D[] iconFlags;
 
-        public Texture2D IconScript => iconScript;
+        public Texture2D IconScript { get { return iconScript; }    set { iconScript = value; } }
+        public Texture2D IconDone { get { return iconDone; } set { iconDone = value; } }
 
         public bool Equals(TextureIcons other) => other is TextureIcons otherS && Equals(otherS);
     }
@@ -38,8 +42,8 @@ namespace Utils
 
         private void InitTextures()
         {
-            icons.iconDone = toDoListConfig.Icon_Done;
-            icons.iconScript = toDoListConfig.Icon_Script;
+            icons.IconDone = toDoListConfig.Icon_Done;
+            icons.IconScript = toDoListConfig.Icon_Script;
         }
 
         public GUIContent GetPriorityFlag(int priority) => CreateGUIIcon(icons.iconFlags[priority]);
@@ -50,8 +54,10 @@ namespace Utils
         {
             GUI.backgroundColor = Color.white;
 
-            if (GUILayout.Button(CreateGUIIcon(icons.iconDone), GUILayout.Width(20), GUILayout.Height(20)))
+            if (GUILayout.Button(CreateGUIIcon(icons.IconDone), GUILayout.Width(20), GUILayout.Height(20)))
+            {
                 ToDoListUtils.RemoveLineFromScript(task.ScriptPath, task);
+            }
 
             GUI.backgroundColor = ToDoListUtils.GetPriorityColor(task.TaskPriority);
         }
@@ -60,8 +66,10 @@ namespace Utils
         {
             GUI.backgroundColor = Color.white;
 
-            if (GUILayout.Button(CreateGUIIcon(icons.iconScript), GUILayout.Width(ICON_SIZE), GUILayout.Height(ICON_SIZE)))
+            if (GUILayout.Button(CreateGUIIcon(icons.IconScript), GUILayout.Width(ICON_SIZE), GUILayout.Height(ICON_SIZE)))
+            {
                 AssetDatabase.OpenAsset(task.Script, task.Line);
+            }
 
             GUI.backgroundColor = ToDoListUtils.GetPriorityColor(task.TaskPriority);
         }

@@ -7,7 +7,7 @@ namespace InventorySystem
     public abstract class ItemSlotUI : MonoBehaviour, IDropHandler
     {
         [SerializeField]
-        protected Image itemIconImage = null;
+        protected Image itemIconImage;
 
         public int SlotIndex { get; private set; }
 

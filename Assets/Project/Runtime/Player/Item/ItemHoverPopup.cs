@@ -8,16 +8,16 @@ namespace InventorySystem
     public class ItemHoverPopup : MonoBehaviour
     {
         [SerializeField] 
-        private GameObject popupCanvasObject = null;
+        private GameObject popupCanvasObject;
 
         [SerializeField] 
-        private RectTransform popupObject = null;
+        private RectTransform popupObject;
 
         [SerializeField]
-        private TextMeshProUGUI headerText = null;
+        private TextMeshProUGUI headerText;
 
         [SerializeField] 
-        private TextMeshProUGUI infoText = null;
+        private TextMeshProUGUI infoText;
 
         [SerializeField] 
         private Vector3 offset = new Vector3(0f, 50f, 0f);
@@ -25,7 +25,7 @@ namespace InventorySystem
         [SerializeField] 
         private float padding = 25f;
 
-        private Canvas popupCanvas = null;
+        private Canvas popupCanvas;
 
         private void Start() => popupCanvas = popupCanvasObject.GetComponent<Canvas>();
 

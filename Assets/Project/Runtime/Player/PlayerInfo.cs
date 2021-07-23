@@ -37,8 +37,8 @@ namespace Player
         [SerializeField]
         private CultivationUI cultivationUI;
 
-        private float percentNeeded = 0;
-        public float percentSuccess;
+        private float percentNeeded;
+        private float percentSuccess;
 
         [SerializeField]
         [Min(0)]
@@ -56,7 +56,6 @@ namespace Player
         public RealmEvent OnRealmUpgradeFailure;
         public SubRealmEvent OnSubRealmUpgrade;
         public SubRealmEvent OnSubRealmUpgradeFailure;
-        public IntEvent OnAgeIncrease;
 
         public string Name => name;
         public Image Avatar => avatar;
@@ -128,11 +127,11 @@ namespace Player
                 return;
             }
 
-            if (cultivation.cultivationBase >= requiredExp)
+            if (cultivation.CB >= requiredExp)
             {
                 if (Random.value < ReturnPercentage())
                 {
-                    cultivation.cultivationBase -= (long)(cultivation.cultivationBase * 0.15);
+                    cultivation.CB -= (long)(cultivation.CB * 0.15);
                     if (subRealm == EnumUtils.Max<SubRealmType>())
                     {
                         RealmType nextRealm = EnumUtils.Next(realm);
@@ -146,7 +145,7 @@ namespace Player
                 } 
                 else
                 {
-                    cultivation.cultivationBase -= requiredExp;
+                    cultivation.CB -= requiredExp;
                     if (subRealm == EnumUtils.Max<SubRealmType>())
                     {
                         if (OnRealmUpgrade != null)

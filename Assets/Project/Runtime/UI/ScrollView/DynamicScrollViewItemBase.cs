@@ -13,7 +13,10 @@ namespace UI
         };
 
         public Text title;
-        public Image background;
+
+        private Image background;
+        
+        public Image Background { get { return background; } set { background = value; } }
 
         public void OnUpdateItem(int index)
         {

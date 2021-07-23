@@ -94,7 +94,9 @@
                     {
                         Camera camera = canvas.worldCamera;
                         if (camera != null)
+                        {
                             return RectTransformUtility.RectangleContainsScreenPoint(self, screenPos, camera);
+                        }
                     }
                     break;
 
@@ -103,6 +105,8 @@
 
                 case RenderMode.WorldSpace:
                     return RectTransformUtility.RectangleContainsScreenPoint(self, screenPos);
+                default:
+                    break;
             }
             return false;
         }

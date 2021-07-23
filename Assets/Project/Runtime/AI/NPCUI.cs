@@ -6,16 +6,16 @@ namespace AI
     public class NPCUI : MonoBehaviour
     {
         [SerializeField]
-        private TextMeshProUGUI npcNameText = null;
+        private TextMeshProUGUI npcNameText;
 
         [SerializeField]
-        private TextMeshProUGUI npcGreetingText = null;
+        private TextMeshProUGUI npcGreetingText;
 
         [SerializeField]
-        private Transform interactionButtonParent = null;
+        private Transform interactionButtonParent;
 
         [SerializeField]
-        private GameObject interactionButtonPrefab = null;
+        private GameObject interactionButtonPrefab;
 
         public void SetNPC(NPC npc)
         {

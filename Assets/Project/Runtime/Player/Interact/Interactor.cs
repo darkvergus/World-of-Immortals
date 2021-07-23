@@ -4,12 +4,12 @@ namespace Interactables
 {
     public class Interactor : MonoBehaviour
     {
-        private IInteractable currentInteractable = null;
+        private IInteractable currentInteractable;
 
         [SerializeField]
         private KeyCode interactionKey = KeyCode.None;
 
-        private bool isInteracting = false;
+        private bool isInteracting;
 
         private void Update() => CheckForInteraction();
 

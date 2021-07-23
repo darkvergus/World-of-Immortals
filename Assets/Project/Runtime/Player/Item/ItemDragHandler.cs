@@ -8,16 +8,16 @@ namespace InventorySystem
     public class ItemDragHandler : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
     {
         [SerializeField]
-        protected ItemSlotUI itemSlotUI = null;
+        protected ItemSlotUI itemSlotUI;
 
         [SerializeField]
-        protected ItemEvent onMouseStartHoverItem = null;
+        protected ItemEvent onMouseStartHoverItem;
 
         [SerializeField]
-        protected VoidEvent onMouseEndHoverItem = null;
+        protected VoidEvent onMouseEndHoverItem;
 
-        private CanvasGroup canvasGroup = null;
-        private Transform originalParent = null;
+        private CanvasGroup canvasGroup;
+        private Transform originalParent;
         private bool isHovering = false;
 
         public ItemSlotUI ItemSlotUI => itemSlotUI;

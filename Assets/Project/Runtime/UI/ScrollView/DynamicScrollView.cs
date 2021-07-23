@@ -19,7 +19,7 @@ namespace UI
 
         protected Direction direction = Direction.VERTICAL;
         protected LinkedList<RectTransform> containers = new LinkedList<RectTransform>();
-        protected float prevAnchoredPosition = 0;
+        protected float prevAnchoredPosition;
         protected int nextInsertItemNo = 0; // item index from left-top of viewport at next insert
         protected int prevTotalItemCount = 99;
         protected ScrollRect scrollRect = null;
@@ -331,7 +331,7 @@ namespace UI
             prototypeItemBg.sprite = UnityEditor.AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UISprite.psd");
 #endif
             prototypeItemBg.type = Image.Type.Sliced;
-            prototypeItem.background = prototypeItemBg;
+            prototypeItem.Background = prototypeItemBg;
             itemPrototype = prototypeItemRect;
 
             RectTransform prototypeTitleRect = new GameObject("Title", typeof(RectTransform), typeof(Text)).GetComponent<RectTransform>();

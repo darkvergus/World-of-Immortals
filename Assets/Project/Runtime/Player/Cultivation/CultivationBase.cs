@@ -9,14 +9,17 @@ namespace Cultivation
     public class CultivationBase
     {
         [Min(0)]
-        public double cultivationBase;
+        private double cultivationBase;
 
         private int generateCB;
         
         [Header("Controls")]
         public int cultivationDuration;
 
-        public IntEvent OnCultivationGain;
+        public double CB { get { return cultivationBase; } set{ cultivationBase = value; } }
+
+        private IntEvent onCultivationGain;
+        public IntEvent OnCultivationGain => onCultivationGain;
 
         private float minCB;
         private float maxCB;

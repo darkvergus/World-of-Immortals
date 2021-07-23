@@ -8,7 +8,7 @@ namespace Utils
 {
     public static class ToDoListUtils
     {
-        public static string[] ActiveHastags = new[] { "TODO", "FIX", "BUG", "IMPROVE"};
+        public static readonly string[] ActiveHastags = new[] { "TODO", "FIX", "BUG", "IMPROVE" };
         public static List<string> ActiveTags = new List<string>();
 
         public static void SortTasksByPriority(ref List<TaskLine> tasks)
@@ -103,8 +103,8 @@ namespace Utils
             {
                 for (int i = 0; i <= tasks.Count - 2; i++)
                 {
-                    CodeTaskLine codeTaskLine = (CodeTaskLine)tasks[i];
-                    CodeTaskLine nextCodeTaskLine = (CodeTaskLine)tasks[i + 1];
+                    CodeTaskLine codeTaskLine = tasks[i];
+                    CodeTaskLine nextCodeTaskLine = tasks[i + 1];
                     if (codeTaskLine.TaskPriority < nextCodeTaskLine.TaskPriority)
                     {
                         CodeTaskLine temp = tasks[i + 1];
