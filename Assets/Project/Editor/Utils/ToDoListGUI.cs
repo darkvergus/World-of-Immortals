@@ -1,13 +1,19 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEngine;
 
 namespace Utils
 {
-    public struct TextureIcons
+    public struct TextureIcons : IEquatable<TextureIcons>
     {
-        public Texture2D iconScript;
+        [SerializeField]
+        private Texture2D iconScript;
         public Texture2D iconDone;
         public Texture2D[] iconFlags;
+
+        public Texture2D IconScript => iconScript;
+
+        public bool Equals(TextureIcons other) => other is TextureIcons otherS && Equals(otherS);
     }
 
     public class ToDoListGUI

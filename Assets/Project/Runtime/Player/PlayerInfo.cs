@@ -15,24 +15,21 @@ namespace Player
     {
         [Header("Basic Info")]
         [SerializeField]
-        private new string name = "";
+        private new string name;
 
         [SerializeField]
-        private int age = 0;
-
-        [SerializeField]
-        private int ageDuration = 0;
-
-        [SerializeField]
-        private Image avatar = null;
+        private Image avatar;
 
         public RealmType realm = RealmType.QICONDENSATION;
 
-        public SubRealmType subRealm = SubRealmType.ONE;
+        private SubRealmType subRealm = SubRealmType.ONE;
 
         public BodyType body = BodyType.BONEREFINING;
 
-        public SubRealmType subBodyRealm = SubRealmType.ONE;
+        private SubRealmType subBodyRealm = SubRealmType.ONE;
+
+        public SubRealmType SubRealm => subRealm;
+        public SubRealmType SubBodyRealm => subBodyRealm;
 
         [SerializeField]
         private CultivationBase cultivation;
@@ -41,7 +38,7 @@ namespace Player
         private CultivationUI cultivationUI;
 
         private float percentNeeded = 0;
-        public float percentSuccess = 0;
+        public float percentSuccess;
 
         [SerializeField]
         [Min(0)]
@@ -54,6 +51,7 @@ namespace Player
         private List<Stat> subStats;
 
         public IntEvent OnPercentUpdate;
+        public DoubleEvent OnRequiredExpUpdate;
         public RealmEvent OnRealmUpgrade;
         public RealmEvent OnRealmUpgradeFailure;
         public SubRealmEvent OnSubRealmUpgrade;
@@ -61,7 +59,6 @@ namespace Player
         public IntEvent OnAgeIncrease;
 
         public string Name => name;
-        public int Age => age;
         public Image Avatar => avatar;
         public CultivationBase Cultivation => cultivation;
         public float PercentNeeded => percentNeeded;
@@ -73,6 +70,9 @@ namespace Player
         private float minCB;
         private float maxCB;
 
+        public float MinCB => minCB;
+        public float MaxCB => maxCB;
+
         private Timer cultivationTimer;
 
         private void Awake()
@@ -80,7 +80,6 @@ namespace Player
             RequiredExpToBreakthrough();
             SetInternalForce();
             cultivationTimer = Timer.Register(cultivation.cultivationDuration, cultivation.GenerateCultivation, null, true, true, null);
-            Timer.Register(ageDuration, IncreaseAge, null, true, true, null);
         }
 
         private void Update()
@@ -92,8 +91,10 @@ namespace Player
             percentNeeded = subRealm != SubRealmType.TEN ? (int)realm * 10 : ((int)(realm + 1) * 10);
 
             percentSuccess = 100 - percentNeeded;
-            if(OnPercentUpdate != null)
+            if (OnPercentUpdate != null)
+            {
                 OnPercentUpdate.Raise((int)percentSuccess);
+            }
         }
         
         public float ReturnPercentage()
@@ -107,23 +108,25 @@ namespace Player
             for (int i = 0; i < SubStats.Count; i++)
             {
                 if (SubStats[i].Name == "MinInternalForce")
+                {
                     minCB = SubStats[i].CurrentPoints;
+                }
+
                 if (SubStats[i].Name == "MaxInternalForce")
+                {
                     maxCB = SubStats[i].CurrentPoints;
+                }
             }
 
             cultivation.SetMinMax(minCB, maxCB);
         }
 
-        public void IncreaseAge() {
-            if (OnAgeIncrease != null)
-                OnAgeIncrease.Raise(age++);
-        }
-
         public void AttemptBreakthrough()
         {
             if (realm == EnumUtils.Max<RealmType>() && subRealm == EnumUtils.Max<SubRealmType>())
+            {
                 return;
+            }
 
             if (cultivation.cultivationBase >= requiredExp)
             {
@@ -165,6 +168,7 @@ namespace Player
                                     subStats[i].AddStatPoints((float)Math.Round(minCB, 2));
                                 if (subStats[i].Name == "MaxInternalForce")
                                     subStats[i].AddStatPoints((float)Math.Round(maxCB, 2));
+                                subStats[i].OnStatAddEvent.Raise(subStats[i]);
                             }
                         }
                     }
@@ -182,11 +186,12 @@ namespace Player
                             maxCB *= .23f;
                             for (int i = 0; i < subStats.Count; i++)
                             {
+
                                 if (subStats[i].Name == "MinInternalForce")
                                     subStats[i].AddStatPoints((float)Math.Round(minCB, 2));
                                 if (subStats[i].Name == "MaxInternalForce")
                                     subStats[i].AddStatPoints((float)Math.Round(maxCB, 2));
-                                
+                                subStats[i].OnStatAddEvent.Raise(subStats[i]);
                             }
                         }
                     }
@@ -200,7 +205,8 @@ namespace Player
         {
             int baseExp = 100 * ((int)realm + 1);
             long currentRealm = ((long)realm * 10) + (long)subRealm;
-            requiredExp = (double)Math.Round(Mathf.Pow(currentRealm, 1.43f) * (baseExp * 10), 2);
+            requiredExp = Math.Round(Mathf.Pow(currentRealm, 1.43f) * (baseExp * 10), 2);
+            OnRequiredExpUpdate.Raise(requiredExp);
 
             return requiredExp;
         }

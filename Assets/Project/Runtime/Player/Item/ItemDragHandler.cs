@@ -50,7 +50,9 @@ namespace InventorySystem
         public virtual void OnDrag(PointerEventData eventData)
         {
             if (eventData.button == PointerEventData.InputButton.Left)
+            {
                 transform.position = Input.mousePosition;
+            }
         }
 
         public virtual void OnPointerUp(PointerEventData eventData)

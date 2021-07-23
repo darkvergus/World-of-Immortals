@@ -97,32 +97,34 @@ namespace AI
 
         public void ConfirmButton()
         {
-            int price = currentItem.Price * (int)amountSlider.value;
-
-            if (vendorData.BuyingItemContainer.SpiritStones < price)
+            if (amountSlider.value > 0)
             {
-                string bodytext = $"You don't have enough SS to buy {RichTextUtils.Green(currentItem.Name)} x{(int)amountSlider.value}. It costs {currentItem.Price * (int)amountSlider.value} SS and you have {vendorData.BuyingItemContainer.SpiritStones} SS.";
-                OnInsufficientSpiritStones.Raise(bodytext);
-                return;
+                int price = currentItem.Price * (int)amountSlider.value;
+
+                if (vendorData.BuyingItemContainer.SpiritStones < price)
+                {
+                    string bodytext = $"You don't have enough SS to buy {RichTextUtils.Green(currentItem.Name)} x{(int)amountSlider.value}. It costs {currentItem.Price * (int)amountSlider.value} SS and you have {vendorData.BuyingItemContainer.SpiritStones} SS.";
+                    OnInsufficientSpiritStones.Raise(bodytext);
+                    return;
+                }
+            
+                vendorData.BuyingItemContainer.SpiritStones -= price;
+                vendorData.SellingItemContainer.SpiritStones += price;
+
+                ItemSlot itemSlotSwap = new ItemSlot(currentItem, (int)amountSlider.value);
+                bool soldAll = (int)amountSlider.value == vendorData.SellingItemContainer.GetTotalAmount(currentItem);
+
+                if (soldAll) 
+                    itemDataHolder.SetActive(false);
+
+                vendorData.BuyingItemContainer.AddItem(itemSlotSwap);
+                vendorData.SellingItemContainer.RemoveItem(itemSlotSwap);
+
+                SetCurrentItemContainer(vendorData.IsFirstContainerBuying);
+
+                if (!soldAll) 
+                    SetItem(currentItem);
             }
-
-            vendorData.BuyingItemContainer.SpiritStones -= price;
-            vendorData.SellingItemContainer.SpiritStones += price;
-
-            ItemSlot itemSlotSwap = new ItemSlot(currentItem, (int)amountSlider.value);
-
-            bool soldAll = (int)amountSlider.value == vendorData.SellingItemContainer.GetTotalAmount(currentItem);
-
-            if (soldAll) 
-                itemDataHolder.SetActive(false);
-
-            vendorData.BuyingItemContainer.AddItem(itemSlotSwap);
-            vendorData.SellingItemContainer.RemoveItem(itemSlotSwap);
-
-            SetCurrentItemContainer(vendorData.IsFirstContainerBuying);
-
-            if (!soldAll) 
-                SetItem(currentItem);
         }
 
         private void ClearItemButtons()

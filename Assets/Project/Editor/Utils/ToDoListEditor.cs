@@ -31,8 +31,10 @@ namespace Utils
 
         private void Init()
         {
-            if (toDoList == null) 
+            if (toDoList == null)
+            {
                 toDoList = new ToDoList();
+            }
         }
 
         private void OnGUI()
@@ -41,9 +43,13 @@ namespace Utils
             toDoList.Init();
 
             if (filterType == SortFilterType.HASHTAG)
+            {
                 toDoList.SearchByHastag(ToDoListUtils.ActiveHastags.ToList().IndexOf(selectedHash));
-            else 
+            }
+            else
+            {
                 toDoList.Search();
+            }
 
             GUIRenderer();
         }
@@ -52,7 +58,9 @@ namespace Utils
         {
             settings = EditorGUILayout.Foldout(settings, "Settings:");
             if (settings)
+            {
                 SettingsLayout();
+            }
 
             scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
 
@@ -68,8 +76,11 @@ namespace Utils
                 }
                 else if (guiMode == GuiType.SIMPLE)
                 {
-                    if (filterType == SortFilterType.PRIORITY) 
+                    if (filterType == SortFilterType.PRIORITY)
+                    {
                         toDoList.SortTasksByPriority();
+                    }
+
                     foreach (var task in toDoList.Tasks)
                     {
                         CodeTaskLine codeTaskLine = (CodeTaskLine)task;
@@ -88,7 +99,9 @@ namespace Utils
             {
                 CodeTaskLine codeTaskLine = (CodeTaskLine)task;
                 if (codeTaskLine.Tags.Contains(tag))
+                {
                     filteredTasks.Add(codeTaskLine);
+                }
             }
 
             EditorGUILayout.BeginVertical("Box");
@@ -207,10 +220,14 @@ namespace Utils
             EditorGUILayout.BeginHorizontal();
             EditorGUI.indentLevel++;
             if (filterType == SortFilterType.HASHTAG)
+            {
                 selectedHash = ToDoListUtils.DropDownSelector("Select Hash: ", selectedHash, ToDoListUtils.ActiveHastags);
+            }
 
             if (filterType == SortFilterType.TAG)
+            {
                 selectedTag = ToDoListUtils.DropDownSelector("Select Tag: ", selectedTag, ToDoListUtils.ActiveTags.ToArray());
+            }
 
             EditorGUI.indentLevel--;
             EditorGUILayout.EndHorizontal();

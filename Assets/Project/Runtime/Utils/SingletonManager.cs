@@ -24,7 +24,7 @@ namespace Utils
                         {
                             GameObject singletonObject = new GameObject();
                             instance = singletonObject.AddComponent<T>();
-                            singletonObject.name = typeof(T).ToString() + " (Singleton)";
+                            singletonObject.name = typeof(T) + " (Singleton)";
 
                             DontDestroyOnLoad(singletonObject);
                         }

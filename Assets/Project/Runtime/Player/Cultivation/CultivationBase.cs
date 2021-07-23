@@ -34,8 +34,10 @@ namespace Cultivation
             if (generateCB != 0)
             {
                 cultivationBase += generateCB;
-                if(OnCultivationGain != null)
+                if (OnCultivationGain != null)
+                {
                     OnCultivationGain.Raise(generateCB);
+                }
             }
         }  
     }

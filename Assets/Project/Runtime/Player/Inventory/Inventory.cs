@@ -114,11 +114,15 @@ namespace InventorySystem
 
             for (int i = 0; i < itemSlots.Length; i++)
             {
-                if (itemSlots[i].item == null) 
+                if (itemSlots[i].item == null)
+                {
                     continue;
+                }
 
-                if (items.Contains(itemSlots[i].item)) 
+                if (items.Contains(itemSlots[i].item))
+                {
                     continue;
+                }
 
                 items.Add(itemSlots[i].item);
             }
@@ -128,7 +132,10 @@ namespace InventorySystem
 
         public void RemoveAt(int slotIndex)
         {
-            if (slotIndex < 0 || slotIndex > itemSlots.Length - 1) { return; }
+            if (slotIndex < 0 || slotIndex > itemSlots.Length - 1)
+            {
+                return; 
+            }
 
             itemSlots[slotIndex] = new ItemSlot();
 
@@ -140,8 +147,10 @@ namespace InventorySystem
             ItemSlot firstSlot = itemSlots[indexOne];
             ItemSlot secondSlot = itemSlots[indexTwo];
 
-            if (firstSlot.Equals(secondSlot)) 
+            if (firstSlot.Equals(secondSlot))
+            {
                 return;
+            }
 
             if (secondSlot.item != null)
             {

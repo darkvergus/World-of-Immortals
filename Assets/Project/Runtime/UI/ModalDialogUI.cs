@@ -11,7 +11,6 @@ namespace UI
         [SerializeField]
         private TextMeshProUGUI dialogText;
 
-
         public void SetDialog(string dialog)
         {
             modalCanvas.gameObject.SetActive(true);

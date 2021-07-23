@@ -41,7 +41,7 @@ namespace Utils
                 }
                 else
                 {
-                    GameObject managerObject = new GameObject { name = "TimerManager" };
+                    GameObject managerObject = new GameObject() { name = "TimerManager" };
                     manager = managerObject.AddComponent<TimerManager>();
                 }
             }

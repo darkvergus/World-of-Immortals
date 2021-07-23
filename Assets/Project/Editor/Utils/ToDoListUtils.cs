@@ -44,7 +44,9 @@ namespace Utils
                     l_line++;
 
                     if (l_line != codeTaskLine.Line)
+                    {
                         sw.WriteLine(line);
+                    }
                 }
             }
 
@@ -77,8 +79,10 @@ namespace Utils
 
         public static string DropDownSelector(string label, string selectedItem, string[] items, params GUILayoutOption[] layoutOptions)
         {
-            if (selectedItem == null) 
+            if (selectedItem == null)
+            {
                 selectedItem = items[0];
+            }
 
             int oldIndex = Array.IndexOf(items, selectedItem);
             if (oldIndex < 0 || oldIndex > items.Length)

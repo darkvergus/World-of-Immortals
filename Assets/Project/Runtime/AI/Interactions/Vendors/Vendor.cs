@@ -11,7 +11,7 @@ namespace AI
 
         public string Name => "Trader";
 
-        private IItemContainer itemContainer = null;
+        private IItemContainer itemContainer;
 
         private void Start() => itemContainer = GetComponent<IItemContainer>();
 

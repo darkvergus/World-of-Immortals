@@ -36,7 +36,9 @@ namespace UI
         public void OnDrag(PointerEventData eventData)
         {
             if (panelRectTransform == null)
+            {
                 return;
+            }
 
             if (RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform, eventData.position, eventData.pressEventCamera, out Vector2 localPointerPosition))
             {
@@ -44,21 +46,28 @@ namespace UI
                 ClampToWindow();
                 Vector2 clampedPosition = panelRectTransform.localPosition;
                 if (clampedToRight)
+                {
                     clampedPosition.x = (canvasRectTransform.rect.width * 0.5f) - (panelRectTransform.rect.width * (1 - panelRectTransform.pivot.x));
+                }
                 else if (clampedToLeft)
+                {
                     clampedPosition.x = (-canvasRectTransform.rect.width * 0.5f) + (panelRectTransform.rect.width * panelRectTransform.pivot.x);
+                }
 
                 if (clampedToTop)
+                {
                     clampedPosition.y = (canvasRectTransform.rect.height * 0.5f) - (panelRectTransform.rect.height * (1 - panelRectTransform.pivot.y));
+                }
                 else if (clampedToBottom)
+                {
                     clampedPosition.y = (-canvasRectTransform.rect.height * 0.5f) + (panelRectTransform.rect.height * panelRectTransform.pivot.y);
+                }
+
                 panelRectTransform.localPosition = clampedPosition;
             }
         }
 
-        public void OnEndDrag(PointerEventData eventData)
-        {
-        }
+        public void OnEndDrag(PointerEventData eventData) { }
 
         private void ClampToWindow()
         {
@@ -70,7 +79,9 @@ namespace UI
             if (panelRectCorners[2].x > canvasCorners[2].x)
             {
                 if (!clampedToRight)
+                {
                     clampedToRight = true;
+                }
             }
             else if (clampedToRight)
             {
@@ -79,7 +90,9 @@ namespace UI
             else if (panelRectCorners[0].x < canvasCorners[0].x)
             {
                 if (!clampedToLeft)
+                {
                     clampedToLeft = true;
+                }
             }
             else if (clampedToLeft)
             {
@@ -89,7 +102,9 @@ namespace UI
             if (panelRectCorners[2].y > canvasCorners[2].y)
             {
                 if (!clampedToTop)
+                {
                     clampedToTop = true;
+                }
             }
             else if (clampedToTop)
             {
@@ -98,7 +113,9 @@ namespace UI
             else if (panelRectCorners[0].y < canvasCorners[0].y)
             {
                 if (!clampedToBottom)
+                {
                     clampedToBottom = true;
+                }
             }
             else if (clampedToBottom)
             {

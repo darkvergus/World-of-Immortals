@@ -12,11 +12,15 @@ namespace InventorySystem
         {
             IItemContainer itemContainer = other.GetComponent<IItemContainer>();
 
-            if (itemContainer == null) 
+            if (itemContainer == null)
+            {
                 return;
+            }
 
             if (itemContainer.AddItem(itemSlot).amount == 0)
+            {
                 Destroy(gameObject);
+            }
         }
     }
 }

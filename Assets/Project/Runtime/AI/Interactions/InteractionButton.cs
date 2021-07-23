@@ -6,10 +6,10 @@ namespace AI
     public class InteractionButton : MonoBehaviour
     {
         [SerializeField]
-        private TextMeshProUGUI interactionNameText = null;
+        private TextMeshProUGUI interactionNameText;
 
-        private IInteraction interaction = null;
-        private GameObject other = null;
+        private IInteraction interaction;
+        private GameObject other;
 
         public void Initialize(IInteraction interaction, GameObject other)
         {

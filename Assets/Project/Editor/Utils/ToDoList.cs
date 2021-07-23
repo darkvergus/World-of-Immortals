@@ -5,8 +5,6 @@ namespace Utils
 {
     public class ToDoList
     {
-        public ToDoList() { }
-
         private ToDoListSearch toDoListSearch;
         private ToDoListGUI toDoListGUI;
 
@@ -19,10 +17,15 @@ namespace Utils
 
         public void Init()
         {
-            if (toDoListSearch == null) 
+            if (toDoListSearch == null)
+            {
                 toDoListSearch = new ToDoListSearch(this);
-            if (toDoListGUI == null) 
+            }
+
+            if (toDoListGUI == null)
+            {
                 toDoListGUI = new ToDoListGUI(this);
+            }
         }
 
         public void Search() => toDoListSearch.Search(ref tasks, ref scriptNames);

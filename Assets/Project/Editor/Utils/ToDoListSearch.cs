@@ -40,14 +40,19 @@ namespace Utils
         {
             foreach (string assetPath in assetPaths)
             {
-                if (assetPath.Contains("/Editor/") || !assetPath.Contains("Assets")) 
+                if (assetPath.Contains("/Editor/") || !assetPath.Contains("Assets"))
+                {
                     continue;
+                }
+
                 if (assetPath.EndsWith(".cs"))
                 {
                     MonoScript mono = AssetDatabase.LoadAssetAtPath<MonoScript>(assetPath);
                     scripts.Add(mono);
                     if (!pathScript.ContainsKey(mono.name))
+                    {
                         pathScript.Add(mono.name, assetPath);
+                    }
                 }
             }
         }
@@ -70,7 +75,9 @@ namespace Utils
                         for (int i = 0; i < start + end + 1; i++)
                         {
                             if (scriptText[i] == '\n')
+                            {
                                 lineCount++;
+                            }
                         }
 
                         string todo = scriptText.Substring(start, end).Replace(":", "");
@@ -78,8 +85,11 @@ namespace Utils
 
                         List<string> tags = TagHandler(ref todo);
 
-                        if (!toDoList.ScriptNames.Contains(script.name)) 
+                        if (!toDoList.ScriptNames.Contains(script.name))
+                        {
                             toDoList.ScriptNames.Add(script.name);
+                        }
+
                         AddNewCodeTask(toDoList.Tasks, script, todo, script.name, lineCount, pathScript[script.name], taskPriority, hashTag, tags);
                     }
                     else
@@ -97,8 +107,10 @@ namespace Utils
             string prioritySubString = scriptText.Substring(scriptText.IndexOf(hashTag, StringComparison.Ordinal) - 3, 3);
             for (int i = 0; i < prioritySubString.Length; i++)
             {
-                if (prioritySubString[i] == '!') 
+                if (prioritySubString[i] == '!')
+                {
                     priorityTask++;
+                }
             }
 
             return priorityTask;
@@ -118,9 +130,13 @@ namespace Utils
                 tagString = tagString.Remove(tagString.Length - 1, 1);
 
                 if (tagString.Contains(","))
+                {
                     tags = tagString.Split(',').ToList();
+                }
                 else
+                {
                     tags.Add(tagString);
+                }
             }
             ToDoListUtils.ActiveTags.AddRange(from tag in tags where !ToDoListUtils.ActiveTags.Contains(tag) select tag);
 
@@ -136,7 +152,9 @@ namespace Utils
             }
 
             if (!tasks.Contains(codeTaskLine))
+            {
                 tasks.Add(codeTaskLine);
+            }
         }
     }
 }

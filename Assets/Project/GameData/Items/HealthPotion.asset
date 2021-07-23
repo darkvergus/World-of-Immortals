@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: HealthPotion
   m_EditorClassIdentifier: 
   name: Health Potion
-  description: Heals the Player
-  icon: {fileID: 0}
+  description: Basic healing potion
+  icon: {fileID: 21300000, guid: 163c1c7fee8325d48831aa14990ae22c, type: 3}
   rarity: {fileID: 11400000, guid: 54310fbc49bbe5244912d2ff9b026d5d, type: 2}
   price: 1
   maxStack: 5
-  useText: Heals The Player
+  useText: It heals the player when used

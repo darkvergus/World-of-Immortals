@@ -6,7 +6,7 @@ namespace InventorySystem
     {
         [Header("Item Data")]
         [SerializeField]
-        private Rarity rarity = null;
+        private Rarity rarity;
 
         [SerializeField]
         [Min(0)]

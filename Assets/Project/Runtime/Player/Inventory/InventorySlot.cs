@@ -37,10 +37,14 @@ namespace InventorySystem
         {
             ItemDragHandler itemDragHandler = eventData.pointerDrag.GetComponent<ItemDragHandler>();
             if (itemDragHandler == null)
+            {
                 return;
+            }
 
             if ((itemDragHandler.ItemSlotUI as InventorySlot) != null)
+            {
                 inventory.Swap(itemDragHandler.ItemSlotUI.SlotIndex, SlotIndex);
+            }
         }
 
         protected override void EnableSlotUI(bool enable)

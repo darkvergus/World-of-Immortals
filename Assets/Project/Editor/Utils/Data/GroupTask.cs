@@ -12,8 +12,10 @@ namespace Utils
 
         public void AddNewTask(CodeTaskLine task)
         {
-            if (Tasks.Contains(task)) 
+            if (Tasks.Contains(task))
+            {
                 return;
+            }
 
             Tasks.Add(task);
             Value += task.TaskPriority;
