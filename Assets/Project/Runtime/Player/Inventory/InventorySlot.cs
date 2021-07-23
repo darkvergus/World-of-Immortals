@@ -12,11 +12,7 @@ namespace InventorySystem
         [SerializeField]
         private TextMeshProUGUI itemQuantityText;
 
-        public override Item SlotItem
-        {
-            get => ItemSlot.Item;
-            set { }
-        }
+        public override Item SlotItem => ItemSlot.Item;
 
         public ItemSlot ItemSlot => inventory.GetSlotByIndex(SlotIndex);
 

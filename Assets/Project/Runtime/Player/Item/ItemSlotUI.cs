@@ -11,7 +11,7 @@ namespace InventorySystem
 
         public int SlotIndex { get; private set; }
 
-        public abstract Item SlotItem { get; set; }
+        public abstract Item SlotItem { get; }
 
         private void OnEnable() => UpdateSlotUI();
 

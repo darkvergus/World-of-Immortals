@@ -5,7 +5,7 @@ namespace Utils
         public static string Bold(this object obj) => $"<b>{obj}</b>";
         public static string Italic(this object obj) => $"<i>{obj}</i>";
 
-        public static string Size(this object obj, int size) => $"<size={size}>{obj}</size>";
+        public static string SetSize(this object obj, int size) => $"<size={size}>{obj}</size>";
         public static string Aqua(this object obj) => ColorProcessor(obj, "aqua");
         public static string Black(this object obj) => ColorProcessor(obj, "black");
         public static string Blue(this object obj) => ColorProcessor(obj, "blue");

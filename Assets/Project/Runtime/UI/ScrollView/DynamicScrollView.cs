@@ -53,7 +53,7 @@ namespace UI
         public void Refresh()
         {
             int index = 0;
-            if (ContentAnchoredPosition != 0)
+            if (ContentAnchoredPosition > 0 || ContentAnchoredPosition < 0)
             {
                 index = (int)(-ContentAnchoredPosition / ItemSize);
             }
@@ -224,12 +224,12 @@ namespace UI
             RectTransform rectTransform = GetComponent<RectTransform>();
             rectTransform.SetFullSize();
 
-            ScrollRect scrollRect = GetComponent<ScrollRect>();
+            scrollRect = GetComponent<ScrollRect>();
             scrollRect.horizontal = direction == Direction.HORIZONTAL;
             scrollRect.vertical = direction == Direction.VERTICAL;
             scrollRect.scrollSensitivity = 15f;
 
-            RectTransform viewportRect = new GameObject("Viewport", typeof(RectTransform), typeof(Mask), typeof(Image)).GetComponent<RectTransform>();
+            viewportRect = new GameObject("Viewport", typeof(RectTransform), typeof(Mask), typeof(Image)).GetComponent<RectTransform>();
             viewportRect.SetParent(scrollRect.transform, false);
             viewportRect.SetFullSize();
             viewportRect.offsetMin = new Vector2(10f, 10f);
@@ -240,7 +240,7 @@ namespace UI
             viewportMask.showMaskGraphic = false;
             scrollRect.viewport = viewportRect;
 
-            RectTransform contentRect = new GameObject("Content", typeof(RectTransform)).GetComponent<RectTransform>();
+            contentRect = new GameObject("Content", typeof(RectTransform)).GetComponent<RectTransform>();
             contentRect.SetParent(viewportRect, false);
 
             if (direction == Direction.HORIZONTAL)

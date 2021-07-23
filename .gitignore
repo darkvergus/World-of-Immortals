@@ -68,3 +68,9 @@ Temp/
 *.json
 *.digestcache
 *.log
+*.rsp
+*.pdb
+*.dll
+*.dag_derived
+*.dag_fsmtime
+*.dag
