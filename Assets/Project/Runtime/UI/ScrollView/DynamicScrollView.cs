@@ -10,8 +10,8 @@ namespace UI
     [RequireComponent(typeof(ScrollRect))]
     public abstract class DynamicScrollView : UIBehaviour
     {
-        public int totalItemCount = 99;
-        public RectTransform itemPrototype;
+        private int totalItemCount = 99;
+        private RectTransform itemPrototype;
         protected abstract float ContentAnchoredPosition { get; set; }
         protected abstract float ContentSize { get; }
         protected abstract float ViewportSize { get; }
@@ -25,6 +25,10 @@ namespace UI
         protected ScrollRect scrollRect;
         protected RectTransform viewportRect;
         protected RectTransform contentRect;
+
+        public int TotalItemCount { get { return totalItemCount; } set { totalItemCount = value; } }
+
+        public RectTransform ItemPrototype { get { return itemPrototype; } set { itemPrototype = value; } }
 
         public enum Direction
         {

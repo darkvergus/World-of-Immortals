@@ -71,7 +71,7 @@ namespace Stats
         public void SetInfo(PlayerInfo player)
         {
             characterName.text = player.Name;
-            characterRealm.text = RealmUtils.GetCurrentRealm(player.realm, player.SubRealm);
+            characterRealm.text = RealmUtils.GetCurrentRealm(player.Realm, player.SubRealm);
             characterAvatar.sprite = player.Avatar.sprite;
             characterCultivatonBase.text = player.Cultivation.CB.ToString();
             characterRequiredCultivationBase.text = player.RequiredExp.ToString();

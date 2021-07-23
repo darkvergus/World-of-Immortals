@@ -20,16 +20,18 @@ namespace Player
         [SerializeField]
         private Image avatar;
 
-        public RealmType realm = RealmType.QICONDENSATION;
+        private RealmType realm = RealmType.QICONDENSATION;
 
         private SubRealmType subRealm = SubRealmType.ONE;
 
-        public BodyType body = BodyType.BONEREFINING;
+        private BodyType body = BodyType.BONEREFINING;
 
         private SubRealmType subBodyRealm = SubRealmType.ONE;
 
-        public SubRealmType SubRealm => subRealm;
-        public SubRealmType SubBodyRealm => subBodyRealm;
+        public RealmType Realm { get { return realm; } set { realm = value; } }
+        public BodyType Body { get { return body; } set { body = value; } }
+        public SubRealmType SubRealm { get { return subRealm; } set { subRealm = value; } }
+        public SubRealmType SubBodyRealm { get { return subBodyRealm; } set { subBodyRealm = value; } }
 
         [SerializeField]
         private CultivationBase cultivation;
@@ -38,11 +40,10 @@ namespace Player
         private CultivationUI cultivationUI;
 
         private float percentNeeded;
-        private float percentSuccess;
 
         [SerializeField]
         [Min(0)]
-        private double requiredExp = 0;
+        private double requiredExp;
 
         [SerializeField]
         private List<Stat> stats;
@@ -78,12 +79,12 @@ namespace Player
         {
             RequiredExpToBreakthrough();
             SetInternalForce();
-            cultivationTimer = Timer.Register(cultivation.cultivationDuration, cultivation.GenerateCultivation, null, true, true, null);
+            cultivationTimer = Timer.Register(cultivation.CultivationDuration, cultivation.GenerateCultivation, null, true, true, null);
         }
 
         private void Update()
         {
-            cultivationUI.CultivationTime.maxValue = cultivation.cultivationDuration;
+            cultivationUI.CultivationTime.maxValue = cultivation.CultivationDuration;
             cultivationUI.CultivationTime.value = cultivationTimer.GetTimeRemaining();
             cultivationUI.CultivationTimeText.text = Mathf.Round(cultivationTimer.GetTimeRemaining()).ToString();
 
@@ -166,9 +167,15 @@ namespace Player
                             for (int i = 0; i < subStats.Count; i++)
                             {
                                 if (subStats[i].Name == "MinInternalForce")
+                                {
                                     subStats[i].AddStatPoints((float)Math.Round(minCB, 2));
+                                }
+
                                 if (subStats[i].Name == "MaxInternalForce")
+                                {
                                     subStats[i].AddStatPoints((float)Math.Round(maxCB, 2));
+                                }
+
                                 subStats[i].OnStatAddEvent.Raise(subStats[i]);
                             }
                         }
@@ -189,9 +196,15 @@ namespace Player
                             {
 
                                 if (subStats[i].Name == "MinInternalForce")
+                                {
                                     subStats[i].AddStatPoints((float)Math.Round(minCB, 2));
+                                }
+
                                 if (subStats[i].Name == "MaxInternalForce")
+                                {
                                     subStats[i].AddStatPoints((float)Math.Round(maxCB, 2));
+                                }
+
                                 subStats[i].OnStatAddEvent.Raise(subStats[i]);
                             }
                         }

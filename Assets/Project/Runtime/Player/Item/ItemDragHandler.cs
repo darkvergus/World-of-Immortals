@@ -18,7 +18,7 @@ namespace InventorySystem
 
         private CanvasGroup canvasGroup;
         private Transform originalParent;
-        private bool isHovering = false;
+        private bool isHovering;
 
         public ItemSlotUI ItemSlotUI => itemSlotUI;
 

@@ -5,8 +5,11 @@ namespace InventorySystem
     [Serializable]
     public struct ItemSlot : IEquatable<ItemSlot>
     {
-        public InventoryItem item;
-        public int amount;
+        private InventoryItem item;
+        private int amount;
+
+        public InventoryItem Item { get { return item; } set { item = value; } }
+        public int Amount { get { return amount; } set { amount = value; } }
 
         public ItemSlot(InventoryItem item, int amount)
         {

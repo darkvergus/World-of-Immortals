@@ -17,7 +17,7 @@ namespace InventorySystem
                 return;
             }
 
-            if (itemContainer.AddItem(itemSlot).amount == 0)
+            if (itemContainer.AddItem(itemSlot).Amount == 0)
             {
                 Destroy(gameObject);
             }

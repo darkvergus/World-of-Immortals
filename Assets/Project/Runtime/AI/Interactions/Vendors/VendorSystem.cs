@@ -47,7 +47,7 @@ namespace AI
             this.vendorData = vendorData;
 
             SetCurrentItemContainer(true);
-            SetItem(vendorData.SellingItemContainer.GetSlotByIndex(0).item);
+            SetItem(vendorData.SellingItemContainer.GetSlotByIndex(0).Item);
         }
 
         public void SetCurrentItemContainer(bool isFirst)
@@ -115,16 +115,20 @@ namespace AI
                 ItemSlot itemSlotSwap = new ItemSlot(currentItem, (int)amountSlider.value);
                 bool soldAll = (int)amountSlider.value == vendorData.SellingItemContainer.GetTotalAmount(currentItem);
 
-                if (soldAll) 
+                if (soldAll)
+                {
                     itemDataHolder.SetActive(false);
+                }
 
                 vendorData.BuyingItemContainer.AddItem(itemSlotSwap);
                 vendorData.SellingItemContainer.RemoveItem(itemSlotSwap);
 
                 SetCurrentItemContainer(vendorData.IsFirstContainerBuying);
 
-                if (!soldAll) 
+                if (!soldAll)
+                {
                     SetItem(currentItem);
+                }
             }
         }
 

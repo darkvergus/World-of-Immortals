@@ -56,8 +56,8 @@ namespace Utils
             GUI.backgroundColor = ToDoListUtils.GetPriorityColor(taskPriority);
         }
 
-        public void GUI_DrawLine(Color color) => ToDoListUtils.DrawUILine(color);
+        public void GUI_DrawLine(Color color) => ToDoListUtils.DrawUILine(color, 0.5f, 15);
 
-        public void SortTasksByPriority() => ToDoListUtils.SortTasksByPriority(ref tasks);
+        public void SortTasksByPriority() => ToDoListUtils.SortTasksByPriority(tasks);
     }
 }

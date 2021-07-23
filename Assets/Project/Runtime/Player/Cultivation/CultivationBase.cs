@@ -14,7 +14,9 @@ namespace Cultivation
         private int generateCB;
         
         [Header("Controls")]
-        public int cultivationDuration;
+        private int cultivationDuration;
+
+        public int CultivationDuration { get { return cultivationDuration; } set { cultivationDuration = value; } } 
 
         public double CB { get { return cultivationBase; } set{ cultivationBase = value; } }
 

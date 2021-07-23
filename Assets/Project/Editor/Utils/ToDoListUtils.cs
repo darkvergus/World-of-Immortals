@@ -11,7 +11,7 @@ namespace Utils
         public static readonly string[] ActiveHastags = new[] { "TODO", "FIX", "BUG", "IMPROVE" };
         public static readonly List<string> ActiveTags = new List<string>();
 
-        public static void SortTasksByPriority(ref List<TaskLine> tasks)
+        public static void SortTasksByPriority(List<TaskLine> tasks)
         {
             for (int j = 0; j <= tasks.Count - 2; j++)
             {
@@ -55,7 +55,7 @@ namespace Utils
             AssetDatabase.Refresh();
         }
 
-        public static void DrawUILine(Color color, float thickness = 0.5f, int padding = 10)
+        public static void DrawUILine(Color color, float thickness, int padding)
         {
             Rect r = EditorGUILayout.GetControlRect(GUILayout.Height(padding + thickness));
             r.height = thickness;
@@ -88,7 +88,6 @@ namespace Utils
             if (oldIndex < 0 || oldIndex > items.Length)
             {
                 oldIndex = 0;
-                selectedItem = items[0];
             }
 
             int newIndex = EditorGUILayout.Popup(label, oldIndex, items, layoutOptions);

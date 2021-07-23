@@ -14,7 +14,7 @@ namespace InventorySystem
 
         public override Item SlotItem
         {
-            get => ItemSlot.item;
+            get => ItemSlot.Item;
             set { }
         }
 
@@ -22,15 +22,15 @@ namespace InventorySystem
 
         public override void UpdateSlotUI()
         {
-            if (ItemSlot.item == null)
+            if (ItemSlot.Item == null)
             {
                 EnableSlotUI(false);
                 return;
             }
             EnableSlotUI(true);
 
-            itemIconImage.sprite = ItemSlot.item.Icon;
-            itemQuantityText.text = ItemSlot.amount > 1 ? ItemSlot.amount.ToString() : "";
+            itemIconImage.sprite = ItemSlot.Item.Icon;
+            itemQuantityText.text = ItemSlot.Amount > 1 ? ItemSlot.Amount.ToString() : "";
         }
 
         public override void OnDrop(PointerEventData eventData)

@@ -7,7 +7,7 @@ namespace InventorySystem
     public class Inventory : MonoBehaviour, IItemContainer
     {
         [SerializeField] 
-        private int spiritStones = 0;
+        private int spiritStones;
 
         [SerializeField]
         private UnityEvent onInventoryItemsUpdated;
@@ -22,17 +22,17 @@ namespace InventorySystem
         {
             for (int i = 0; i < itemSlots.Length; i++)
             {
-                if (itemSlots[i].item != null)
+                if (itemSlots[i].Item != null)
                 {
-                    if (itemSlots[i].item == itemSlot.item)
+                    if (itemSlots[i].Item == itemSlot.Item)
                     {
-                        int slotRemainingSpace = itemSlots[i].item.MaxStack - itemSlots[i].amount;
+                        int slotRemainingSpace = itemSlots[i].Item.MaxStack - itemSlots[i].Amount;
 
-                        if (itemSlot.amount <= slotRemainingSpace)
+                        if (itemSlot.Amount <= slotRemainingSpace)
                         {
-                            itemSlots[i].amount += itemSlot.amount;
+                            itemSlots[i].Amount += itemSlot.Amount;
 
-                            itemSlot.amount = 0;
+                            itemSlot.Amount = 0;
 
                             onInventoryItemsUpdated.Invoke();
 
@@ -40,9 +40,9 @@ namespace InventorySystem
                         }
                         else if (slotRemainingSpace > 0)
                         {
-                            itemSlots[i].amount += slotRemainingSpace;
+                            itemSlots[i].Amount += slotRemainingSpace;
 
-                            itemSlot.amount -= slotRemainingSpace;
+                            itemSlot.Amount -= slotRemainingSpace;
                         }
                     }
                 }
@@ -50,13 +50,13 @@ namespace InventorySystem
 
             for (int i = 0; i < itemSlots.Length; i++)
             {
-                if (itemSlots[i].item == null)
+                if (itemSlots[i].Item == null)
                 {
-                    if (itemSlot.amount <= itemSlot.item.MaxStack)
+                    if (itemSlot.Amount <= itemSlot.Item.MaxStack)
                     {
                         itemSlots[i] = itemSlot;
 
-                        itemSlot.amount = 0;
+                        itemSlot.Amount = 0;
 
                         onInventoryItemsUpdated.Invoke();
 
@@ -64,9 +64,9 @@ namespace InventorySystem
                     }
                     else
                     {
-                        itemSlots[i] = new ItemSlot(itemSlot.item, itemSlot.item.MaxStack);
+                        itemSlots[i] = new ItemSlot(itemSlot.Item, itemSlot.Item.MaxStack);
 
-                        itemSlot.amount -= itemSlot.item.MaxStack;
+                        itemSlot.Amount -= itemSlot.Item.MaxStack;
                     }
                 }
             }
@@ -80,21 +80,21 @@ namespace InventorySystem
         {
             for (int i = 0; i < itemSlots.Length; i++)
             {
-                if (itemSlots[i].item != null)
+                if (itemSlots[i].Item != null)
                 {
-                    if (itemSlots[i].item == itemSlot.item)
+                    if (itemSlots[i].Item == itemSlot.Item)
                     {
-                        if (itemSlots[i].amount < itemSlot.amount)
+                        if (itemSlots[i].Amount < itemSlot.Amount)
                         {
-                            itemSlot.amount -= itemSlots[i].amount;
+                            itemSlot.Amount -= itemSlots[i].Amount;
 
                             itemSlots[i] = new ItemSlot();
                         }
                         else
                         {
-                            itemSlots[i].amount -= itemSlot.amount;
+                            itemSlots[i].Amount -= itemSlot.Amount;
 
-                            if (itemSlots[i].amount == 0)
+                            if (itemSlots[i].Amount == 0)
                             {
                                 itemSlots[i] = new ItemSlot();
 
@@ -114,17 +114,17 @@ namespace InventorySystem
 
             for (int i = 0; i < itemSlots.Length; i++)
             {
-                if (itemSlots[i].item == null)
+                if (itemSlots[i].Item == null)
                 {
                     continue;
                 }
 
-                if (items.Contains(itemSlots[i].item))
+                if (items.Contains(itemSlots[i].Item))
                 {
                     continue;
                 }
 
-                items.Add(itemSlots[i].item);
+                items.Add(itemSlots[i].Item);
             }
 
             return items;
@@ -152,15 +152,15 @@ namespace InventorySystem
                 return;
             }
 
-            if (secondSlot.item != null)
+            if (secondSlot.Item != null)
             {
-                if (firstSlot.item == secondSlot.item)
+                if (firstSlot.Item == secondSlot.Item)
                 {
-                    int secondSlotRemainingSpace = secondSlot.item.MaxStack - secondSlot.amount;
+                    int secondSlotRemainingSpace = secondSlot.Item.MaxStack - secondSlot.Amount;
 
-                    if (firstSlot.amount <= secondSlotRemainingSpace)
+                    if (firstSlot.Amount <= secondSlotRemainingSpace)
                     {
-                        itemSlots[indexTwo].amount += firstSlot.amount;
+                        itemSlots[indexTwo].Amount += firstSlot.Amount;
 
                         itemSlots[indexOne] = new ItemSlot();
 
@@ -181,7 +181,7 @@ namespace InventorySystem
         {
             foreach (ItemSlot itemSlot in itemSlots)
             {
-                if (itemSlot.item == null || itemSlot.item != item)
+                if (itemSlot.Item == null || itemSlot.Item != item)
                 {
                     continue;
                 }
@@ -198,12 +198,12 @@ namespace InventorySystem
 
             foreach (ItemSlot itemSlot in itemSlots)
             {
-                if (itemSlot.item == null || itemSlot.item != item)
+                if (itemSlot.Item == null || itemSlot.Item != item)
                 {
                     continue;
                 }
 
-                totalCount += itemSlot.amount;
+                totalCount += itemSlot.Amount;
             }
 
             return totalCount;

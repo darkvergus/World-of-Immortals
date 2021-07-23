@@ -8,7 +8,7 @@ namespace UI
         protected override float ContentAnchoredPosition { get { return contentRect.anchoredPosition.x; } set { contentRect.anchoredPosition = new Vector2(value, contentRect.anchoredPosition.y); } }
         protected override float ContentSize => contentRect.rect.width;
         protected override float ViewportSize => viewportRect.rect.width;
-        protected override float ItemSize => itemPrototype.rect.width;
+        protected override float ItemSize => ItemPrototype.rect.width;
 
         public override void Init()
         {
