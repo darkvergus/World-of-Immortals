@@ -12,10 +12,11 @@ namespace UI
             Color.green,
         };
 
-        public Text title;
+        private Text title;
 
         private Image background;
-        
+
+        public Text Title { get { return title; } set { title = value; } }
         public Image Background { get { return background; } set { background = value; } }
 
         public void OnUpdateItem(int index)

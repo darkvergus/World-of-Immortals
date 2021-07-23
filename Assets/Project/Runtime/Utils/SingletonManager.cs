@@ -4,7 +4,7 @@ namespace Utils
 {
     public class SingletonManager<T> : MonoBehaviour where T : MonoBehaviour
     {
-        private static bool shuttingDown = false;
+        private static bool shuttingDown;
         private static readonly object @lock = new object();
         private static T instance;
 

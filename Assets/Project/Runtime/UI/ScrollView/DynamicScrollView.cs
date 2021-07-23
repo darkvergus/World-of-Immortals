@@ -20,7 +20,7 @@ namespace UI
         protected Direction direction = Direction.VERTICAL;
         protected LinkedList<RectTransform> containers = new LinkedList<RectTransform>();
         protected float prevAnchoredPosition;
-        protected int nextInsertItemNo = 0; // item index from left-top of viewport at next insert
+        protected int nextInsertItemNo; // item index from left-top of viewport at next insert
         protected int prevTotalItemCount = 99;
         protected ScrollRect scrollRect;
         protected RectTransform viewportRect;
@@ -353,7 +353,7 @@ namespace UI
             title.resizeTextForBestFit = true;
             title.resizeTextMinSize = 9;
             title.resizeTextMaxSize = 40;
-            prototypeItem.title = title;
+            prototypeItem.Title = title;
         }
 
         protected virtual void Clear()

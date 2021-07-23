@@ -51,12 +51,19 @@ namespace Player
         [SerializeField]
         private List<Stat> subStats;
 
-        public IntEvent OnPercentUpdate;
-        public DoubleEvent OnRequiredExpUpdate;
-        public RealmEvent OnRealmUpgrade;
-        public RealmEvent OnRealmUpgradeFailure;
-        public SubRealmEvent OnSubRealmUpgrade;
-        public SubRealmEvent OnSubRealmUpgradeFailure;
+        private IntEvent onPercentUpdate;
+        private DoubleEvent onRequiredExpUpdate;
+        private RealmEvent onRealmUpgrade;
+        private RealmEvent onRealmUpgradeFailure;
+        private SubRealmEvent onSubRealmUpgrade;
+        private SubRealmEvent onSubRealmUpgradeFailure;
+
+        public IntEvent OnPercentUpdate { get { return onPercentUpdate; }set { onPercentUpdate = value; } }
+        public DoubleEvent OnRequiredExpUpdate { get { return onRequiredExpUpdate; } set { onRequiredExpUpdate = value; } }
+        public RealmEvent OnRealmUpgrade { get { return onRealmUpgrade; } set { onRealmUpgrade = value; } }
+        public RealmEvent OnRealmUpgradeFailure { get { return onRealmUpgradeFailure; } set { onRealmUpgradeFailure = value; } }
+        public SubRealmEvent OnSubRealmUpgrade { get { return onSubRealmUpgrade; } set { onSubRealmUpgrade = value; } }
+        public SubRealmEvent OnSubRealmUpgradeFailure { get { return onSubRealmUpgradeFailure; } set { onSubRealmUpgradeFailure = value; } }
 
         public string Name => name;
         public Image Avatar => avatar;

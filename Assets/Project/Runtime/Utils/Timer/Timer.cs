@@ -30,7 +30,7 @@ namespace Utils
         private bool IsOwnerDestroyed => hasAutoDestroyOwner && autoDestroyOwner == null;
         public bool IsDone => IsCompleted || IsCancelled || IsOwnerDestroyed;
 
-        public static Timer Register(float duration, Action onComplete, Action<float> onUpdate = null, bool isLooped = false, bool useRealTime = false, MonoBehaviour autoDestroyOwner = null)
+        public static Timer Register(float duration, Action onComplete, Action<float> onUpdate, bool isLooped, bool useRealTime, MonoBehaviour autoDestroyOwner)
         {
             if (manager == null)
             {

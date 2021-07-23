@@ -35,8 +35,10 @@ namespace InventorySystem
 
         private void FollowCursor()
         {
-            if (!popupCanvasObject.activeSelf) 
+            if (!popupCanvasObject.activeSelf)
+            {
                 return;
+            }
 
             Vector3 newPos = Input.mousePosition + offset;
             newPos.z = 0f;

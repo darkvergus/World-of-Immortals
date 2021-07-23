@@ -22,7 +22,7 @@ namespace Stats
         public int MaxPoints { get { return maxPoints; } private set { maxPoints = value; } }
 
         private StatEvent onStatAddEvent;
-        public StatEvent OnStatAddEvent => onStatAddEvent;
+        public StatEvent OnStatAddEvent { get { return onStatAddEvent; } set { onStatAddEvent = value; } }
 
         public void AddStatPoints(int points) => CurrentPoints += points;
 

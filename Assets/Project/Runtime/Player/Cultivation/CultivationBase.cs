@@ -10,8 +10,6 @@ namespace Cultivation
     {
         [Min(0)]
         private double cultivationBase;
-
-        private int generateCB;
         
         [Header("Controls")]
         private int cultivationDuration;
@@ -34,7 +32,7 @@ namespace Cultivation
 
         public void GenerateCultivation()
         {
-            generateCB = (int)Random.Range(minCB, maxCB);
+            int generateCB = (int)Random.Range(minCB, maxCB);
 
             if (generateCB != 0)
             {
