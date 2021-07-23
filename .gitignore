@@ -3525,3 +3525,7 @@ ProjectSettings/DynamicsManager.asset
 ProjectSettings/ProjectSettings.asset
 ProjectSettings/ProjectVersion.txt
 UserSettings/EditorUserSettings.asset
+Library/ArtifactDB
+Library/Search/transactions.db
+Library/SourceAssetDB
+Logs/shadercompiler-UnityShaderCompiler.exe0.log
