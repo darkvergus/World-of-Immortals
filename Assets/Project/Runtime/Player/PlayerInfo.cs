@@ -171,20 +171,7 @@ namespace Player
                             }
                             minCB *= .35f;
                             maxCB *= .35f;
-                            for (int i = 0; i < subStats.Count; i++)
-                            {
-                                if (subStats[i].Name == "MinInternalForce")
-                                {
-                                    subStats[i].AddStatPoints((float)Math.Round(minCB, 2));
-                                }
-
-                                if (subStats[i].Name == "MaxInternalForce")
-                                {
-                                    subStats[i].AddStatPoints((float)Math.Round(maxCB, 2));
-                                }
-
-                                subStats[i].OnStatAddEvent.Raise(subStats[i]);
-                            }
+                            RaiseSubStats();
                         }
                     }
                     else
@@ -199,26 +186,31 @@ namespace Player
                             }
                             minCB *= .23f;
                             maxCB *= .23f;
-                            for (int i = 0; i < subStats.Count; i++)
-                            {
-
-                                if (subStats[i].Name == "MinInternalForce")
-                                {
-                                    subStats[i].AddStatPoints((float)Math.Round(minCB, 2));
-                                }
-
-                                if (subStats[i].Name == "MaxInternalForce")
-                                {
-                                    subStats[i].AddStatPoints((float)Math.Round(maxCB, 2));
-                                }
-
-                                subStats[i].OnStatAddEvent.Raise(subStats[i]);
-                            }
+                            RaiseSubStats();
                         }
                     }
                     SetInternalForce();
                     RequiredExpToBreakthrough();
                 }
+            }
+        }
+
+        private void RaiseSubStats()
+        {
+            for (int i = 0; i < subStats.Count; i++)
+            {
+
+                if (subStats[i].Name == "MinInternalForce")
+                {
+                    subStats[i].AddStatPoints((float)Math.Round(minCB, 2));
+                }
+
+                if (subStats[i].Name == "MaxInternalForce")
+                {
+                    subStats[i].AddStatPoints((float)Math.Round(maxCB, 2));
+                }
+
+                subStats[i].OnStatAddEvent.Raise(subStats[i]);
             }
         }
 
