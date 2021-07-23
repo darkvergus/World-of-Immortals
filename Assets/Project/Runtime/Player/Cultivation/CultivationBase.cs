@@ -19,7 +19,7 @@ namespace Cultivation
         public double CB { get { return cultivationBase; } set{ cultivationBase = value; } }
 
         private IntEvent onCultivationGain;
-        public IntEvent OnCultivationGain => onCultivationGain;
+        public IntEvent OnCultivationGain { get { return onCultivationGain; } set { onCultivationGain = value; } }
 
         private float minCB;
         private float maxCB;

@@ -8,7 +8,7 @@ namespace Utils
         private KeyCode keyCode = KeyCode.None;
 
         [SerializeField] 
-        private GameObject objectToToggle = null;
+        private GameObject objectToToggle;
 
         private void Update()
         {

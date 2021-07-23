@@ -7,12 +7,12 @@ namespace Utils
 {
     public class ToDoListSearch
     {
-        private ToDoList toDoList;
-        private string[] HASTAGS_PREFIX = new[] { "TODO", "FIX", "BUG", "IMPROVE" };
+        private readonly ToDoList toDoList;
+        private readonly string[] HASTAGS_PREFIX = new[] { "TODO", "FIX", "BUG", "IMPROVE" };
 
         public ToDoListSearch(ToDoList toDoList) => this.toDoList = toDoList;
 
-        public void Search(ref List<TaskLine> tags, ref List<string> scriptNames, int hastagID = -1)
+        public void Search(ref List<TaskLine> tags, ref List<string> scriptNames, int hastagID)
         {
             tags = new List<TaskLine>();
             scriptNames = new List<string>();

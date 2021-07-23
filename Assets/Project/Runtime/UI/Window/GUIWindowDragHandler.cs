@@ -67,7 +67,10 @@ namespace UI
             }
         }
 
-        public void OnEndDrag(PointerEventData eventData) { }
+        public void OnEndDrag(PointerEventData eventData)
+        {
+            // Not Needed            
+        }
 
         private void ClampToWindow()
         {

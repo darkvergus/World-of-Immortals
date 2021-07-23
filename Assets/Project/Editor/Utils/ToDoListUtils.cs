@@ -9,7 +9,7 @@ namespace Utils
     public static class ToDoListUtils
     {
         public static readonly string[] ActiveHastags = new[] { "TODO", "FIX", "BUG", "IMPROVE" };
-        public static List<string> ActiveTags = new List<string>();
+        public static readonly List<string> ActiveTags = new List<string>();
 
         public static void SortTasksByPriority(ref List<TaskLine> tasks)
         {

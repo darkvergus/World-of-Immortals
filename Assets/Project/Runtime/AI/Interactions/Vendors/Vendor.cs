@@ -7,7 +7,7 @@ namespace AI
     public class Vendor : MonoBehaviour, IInteraction
     {
         [SerializeField]
-        private VendorDataEvent OnStartVendor = null;
+        private VendorDataEvent OnStartVendor;
 
         public string Name => "Trader";
 
@@ -20,7 +20,9 @@ namespace AI
             IItemContainer otherItemContainer = other.GetComponent<IItemContainer>();
 
             if (otherItemContainer == null)
+            {
                 return;
+            }
 
             VendorData vendorData = new VendorData(otherItemContainer, itemContainer);
 

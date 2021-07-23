@@ -89,6 +89,8 @@ namespace Player
 
             percentNeeded = subRealm != SubRealmType.TEN ? (int)realm * 10 : ((int)(realm + 1) * 10);
 
+            float percentSuccess;
+
             percentSuccess = 100 - percentNeeded;
             if (OnPercentUpdate != null)
             {

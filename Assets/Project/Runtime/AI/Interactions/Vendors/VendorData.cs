@@ -9,7 +9,7 @@ namespace AI
 
         private readonly IItemContainer[] itemContainers = new IItemContainer[2];
 
-        public bool IsFirstContainerBuying { get; set; } = true;
+        public bool IsFirstContainerBuying { get; set; }
 
         public VendorData(IItemContainer buyingItemContainer, IItemContainer sellingItemContainer)
         {

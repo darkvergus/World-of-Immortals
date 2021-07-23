@@ -28,7 +28,7 @@ namespace Utils
             }
         }
 
-        public void Search() => toDoListSearch.Search(ref tasks, ref scriptNames);
+        public void Search() => toDoListSearch.Search(ref tasks, ref scriptNames, -1);
 
         public void SearchByHastag(int hastagID) => toDoListSearch.Search(ref tasks, ref scriptNames, hastagID);
 
@@ -46,10 +46,13 @@ namespace Utils
 
         public void GUI_Tag(CodeTaskLine task) => toDoListGUI.Task_Tag(task);
 
-        public void GUI_SetPriorityColor(int taskPriority = -1)
+        public void GUI_SetPriorityColor(int taskPriority)
         {
-            if (taskPriority == -1) 
+            if (taskPriority == -1)
+            {
                 GUI.backgroundColor = Color.white;
+            }
+
             GUI.backgroundColor = ToDoListUtils.GetPriorityColor(taskPriority);
         }
 

@@ -4,7 +4,7 @@ namespace Utils
 {
     public static class GameObjectUtils
     {
-        public static void SetLayer(this GameObject self, int layer, bool includeChildren = true)
+        public static void SetLayer(this GameObject self, int layer, bool includeChildren)
         {
             self.layer = layer;
             if (includeChildren)

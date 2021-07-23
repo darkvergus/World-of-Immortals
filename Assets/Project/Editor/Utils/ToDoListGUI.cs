@@ -12,17 +12,18 @@ namespace Utils
         [SerializeField]
         private Texture2D iconDone;
         
-        public Texture2D[] iconFlags;
+        private Texture2D[] iconFlags;
 
         public Texture2D IconScript { get { return iconScript; }    set { iconScript = value; } }
         public Texture2D IconDone { get { return iconDone; } set { iconDone = value; } }
+        public Texture2D[] IconFlags { get { return iconFlags; } set { iconFlags = value; } }
 
         public bool Equals(TextureIcons other) => other is TextureIcons otherS && Equals(otherS);
     }
 
     public class ToDoListGUI
     {
-        private ToDoList toDoList;
+        private readonly ToDoList toDoList;
         private ToDoListConfig toDoListConfig;
 
         private TextureIcons icons;
@@ -42,11 +43,11 @@ namespace Utils
 
         private void InitTextures()
         {
-            icons.IconDone = toDoListConfig.Icon_Done;
-            icons.IconScript = toDoListConfig.Icon_Script;
+            icons.IconDone = toDoListConfig.IconDone;
+            icons.IconScript = toDoListConfig.IconScript;
         }
 
-        public GUIContent GetPriorityFlag(int priority) => CreateGUIIcon(icons.iconFlags[priority]);
+        public GUIContent GetPriorityFlag(int priority) => CreateGUIIcon(icons.IconFlags[priority]);
 
         private GUIContent CreateGUIIcon(Texture2D icon) => new GUIContent(icon);
 

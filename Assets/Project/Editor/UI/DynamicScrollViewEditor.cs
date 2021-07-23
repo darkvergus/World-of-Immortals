@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UI
 {
-    public class DynamicScrollViewEditor
+    public static class DynamicScrollViewEditor
     {
         [MenuItem("GameObject/UI/Dynamic H Scroll View")]
         public static void CreateHorizontal()

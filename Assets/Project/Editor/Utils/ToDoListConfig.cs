@@ -4,7 +4,10 @@ namespace Utils
 {
     public class ToDoListConfig : ScriptableObject
     {
-        public Texture2D Icon_Done;
-        public Texture2D Icon_Script;
+        private Texture2D iconDone;
+        private Texture2D iconScript;
+
+        public Texture2D IconDone { get{ return iconDone; } set { iconDone = value; } }
+        public Texture2D IconScript { get { return iconScript; } set { iconScript = value; } }
     }
 }

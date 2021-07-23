@@ -8,8 +8,11 @@ namespace UI
     [RequireComponent(typeof(ScrollRect))]
     public class ScrollbarHandleSize : UIBehaviour
     {
-        public float maxSize = 1.0f;
-        public float minSize = 0.1f;
+        private float maxSize = 1.0f;
+        private float minSize = 0.1f;
+
+        public float MaxSize { get { return maxSize; } set { maxSize = value; } }
+        public float MinSize { get { return minSize; } set { minSize = value; } }
 
         private ScrollRect  scrollRect;
 

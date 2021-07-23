@@ -118,7 +118,7 @@ namespace Utils
                 toDoList.GUI_Button_Script(task);
                 EditorGUILayout.EndHorizontal();
 
-                toDoList.GUI_SetPriorityColor();
+                toDoList.GUI_SetPriorityColor(-1);
                 EditorGUILayout.EndHorizontal();
             }
 
@@ -169,7 +169,7 @@ namespace Utils
                     toDoList.GUI_Button_Script(groupTask.Tasks[taskID]);
                     EditorGUILayout.EndHorizontal();
 
-                    toDoList.GUI_SetPriorityColor();
+                    toDoList.GUI_SetPriorityColor(-1);
                     EditorGUILayout.EndHorizontal();
                     taskID++;
                 }
@@ -202,7 +202,7 @@ namespace Utils
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.EndVertical();
 
-            toDoList.GUI_SetPriorityColor();
+            toDoList.GUI_SetPriorityColor(-1);
         }
 
         private void SettingsLayout()

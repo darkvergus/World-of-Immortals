@@ -11,7 +11,7 @@ namespace UI
     public abstract class DynamicScrollView : UIBehaviour
     {
         public int totalItemCount = 99;
-        public RectTransform itemPrototype = null;
+        public RectTransform itemPrototype;
         protected abstract float ContentAnchoredPosition { get; set; }
         protected abstract float ContentSize { get; }
         protected abstract float ViewportSize { get; }
@@ -22,9 +22,9 @@ namespace UI
         protected float prevAnchoredPosition;
         protected int nextInsertItemNo = 0; // item index from left-top of viewport at next insert
         protected int prevTotalItemCount = 99;
-        protected ScrollRect scrollRect = null;
-        protected RectTransform viewportRect = null;
-        protected RectTransform contentRect = null;
+        protected ScrollRect scrollRect;
+        protected RectTransform viewportRect;
+        protected RectTransform contentRect;
 
         public enum Direction
         {
@@ -305,8 +305,8 @@ namespace UI
             if (scrollbarHandleSize == null)
             {
                 scrollbarHandleSize = scrollRect.gameObject.AddComponent<ScrollbarHandleSize>();
-                scrollbarHandleSize.maxSize = 1.0f;
-                scrollbarHandleSize.minSize = 0.1f;
+                scrollbarHandleSize.MaxSize = 1.0f;
+                scrollbarHandleSize.MinSize = 0.1f;
             }
 
             gameObject.SetLayer(transform.parent.gameObject.layer, true);
