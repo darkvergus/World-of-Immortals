@@ -2,42 +2,41 @@
 
 namespace Utils
 {
-    public class SingletonManager<T> : MonoBehaviour where T : MonoBehaviour
+    public abstract class SingletonManager<T> : MonoBehaviour where T : MonoBehaviour
     {
-        private static bool shuttingDown;
-        private static readonly object @lock = new object();
         private static T instance;
 
-        public static T Instance
-        {
-            get
-            {
-                if (shuttingDown)
-                {
-                    return null;
-                }
-
-                lock (@lock)
-                {
-                    if (instance == null)
-                    {
-                        instance = (T)FindObjectOfType(typeof(T));
-                        if (instance == null)
+		public static T Instance
+		{
+			get
+			{
+				if (instance == null)
+				{
+					instance = FindObjectOfType<T>();
+					if (instance == null)
+					{
+                        GameObject obj = new GameObject
                         {
-                            GameObject singletonObject = new GameObject();
-                            instance = singletonObject.AddComponent<T>();
-                            singletonObject.name = typeof(T) + " (Singleton)";
+                            name = typeof(T).Name
+                        };
+                        instance = obj.AddComponent<T>();
+					}
+				}
+				return instance;
+			}
+		}
 
-                            DontDestroyOnLoad(singletonObject);
-                        }
-                    }
-                    return instance;
-                }
-            }
-        }
-
-        private static void OnApplicationQuit() => shuttingDown = true;
-
-        private static void OnDestroy() => shuttingDown = true;
-    }
+		protected virtual void Awake()
+		{
+			if (instance == null)
+			{
+				instance = this as T;
+				DontDestroyOnLoad(gameObject);
+			}
+			else
+			{
+				Destroy(gameObject);
+			}
+		}
+	}
 }

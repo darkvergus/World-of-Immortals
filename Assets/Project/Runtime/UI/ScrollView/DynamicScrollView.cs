@@ -53,7 +53,7 @@ namespace UI
         public void Refresh()
         {
             int index = 0;
-            if (ContentAnchoredPosition > 0 || ContentAnchoredPosition < 0)
+            if (ContentAnchoredPosition != 0)
             {
                 index = (int)(-ContentAnchoredPosition / ItemSize);
             }

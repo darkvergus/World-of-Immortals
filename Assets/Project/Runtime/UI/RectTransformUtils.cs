@@ -105,6 +105,8 @@
 
                 case RenderMode.WorldSpace:
                     return RectTransformUtility.RectangleContainsScreenPoint(self, screenPos);
+                default:
+                    return RectTransformUtility.RectangleContainsScreenPoint(self, screenPos);
             }
             return false;
         }
