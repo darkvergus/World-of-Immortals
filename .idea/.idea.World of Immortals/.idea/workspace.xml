@@ -10,9 +10,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/39/a8486c33/IEquatable`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/97/f2920df2/IDisposable.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f3a3b8b12c41449e94288747eaaf00012e600/1a/a78b43b3/Physics2D.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f97e60e60e624d5086175cd19c2ec9e71c6800/5d/8a819855/ColorUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f97e60e60e624d5086175cd19c2ec9e71c6800/a5/9c21a0f0/UnityEvent`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f97e60e60e624d5086175cd19c2ec9e71c6800/b0/f2b3d198/Component.cs" root0="SKIP_HIGHLIGHTING" />
@@ -33,6 +37,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
@@ -48,7 +53,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="D:\Programming\Unity\2023.2.0a18\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="D:\Programming\Unity\2023.2.0a20\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath &quot;D:\Programming\Projects\World of Immortals&quot; -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="D:\Programming\Projects\World of Immortals" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -56,7 +61,7 @@
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="D:\Programming\Unity\2023.2.0a18\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="D:\Programming\Unity\2023.2.0a20\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath &quot;D:\Programming\Projects\World of Immortals&quot; -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="D:\Programming\Projects\World of Immortals" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -103,6 +108,10 @@
       <workItem from="1686401756562" duration="12747000" />
       <workItem from="1686415216591" duration="3439000" />
       <workItem from="1686753656056" duration="9992000" />
+      <workItem from="1688120321741" duration="19000" />
+      <workItem from="1688155074594" duration="1432000" />
+      <workItem from="1688156947153" duration="5577000" />
+      <workItem from="1688222314802" duration="12951000" />
     </task>
     <servers />
   </component>
