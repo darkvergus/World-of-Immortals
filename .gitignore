@@ -61,7 +61,6 @@
 # 3D Images
 *.3dm
 *.max
-Assets/
 Library/
 Temp/
 *.meta
